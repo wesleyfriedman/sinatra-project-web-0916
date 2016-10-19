@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <a href="/restaurants/new">Add a Restaurant</a>
+    <a href="/users/new">Add a User</a>
+    <a href="/restaurants">See all Restaurants</a>
+    <a href="/users">See all Users</a>
+    <h1>Edit <%=@user.name%></h1>
+    <form action="/users/<%=@user.id%>" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
+        <p>Name:<input type="text" name="user[name]" value="<%=@user.name%>"></p>
+        <p><button type="submit">update</button></p>
+    </form>
+    <form action="/users/<%=@user.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <p><button type="submit" value="delete">delete</button></p>
+    </form>
+</body>
+</html>

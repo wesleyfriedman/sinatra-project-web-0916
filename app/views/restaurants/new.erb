@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/users/new">Add a User</a>
+    <a href="/restaurants">See all Restaurants</a>
+    <a href="/users">See all Users</a>
+
+    <form class="" action="/restaurants" method="get">
+      <h1>Search for a Restaurant</h1>
+      <p>City: <input type="text" name="location" value=""></p>
+      <p>Cuisine: <input type="text" name="term" value=""></p>
+      <p><button type="submit">search</button></p>
+    </form>
+    <h1>Add a Restaurant</h1>
+    <form class="" action="/restaurants" method="post">
+      <p>Name: <input type="text" name="name" value=""></p>
+      <p>Rating: <input type="text" name="rating" value=""></p>
+      <p>Address: <input type="text" name="address" value=""></p>
+      <p><button type="submit" >submit</button></p>
+
+    </form>
+  </body>
+</html>

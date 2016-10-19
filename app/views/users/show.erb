@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <a href="/restaurants/new">Add a Restaurant</a>
+    <a href="/users/new">Add a User</a>
+    <a href="/restaurants">See all Restaurants</a>
+    <a href="/users">See all Users</a>
+    <p>Name: <%=@user.name%><br></p>
+    <p>Restaurant(s) <%=@user.name%> wants to try:</p>
+    <ul>
+        <%@user.restaurants.each do |restaurant|%>
+            <li><%=restaurant.name%></li>
+        <%end%>
+    </ul>
+    <form action="/users/<%=@user.id%>" method="POST">
+            <select name="users[restaurant_id]" type="text">
+            <%Restaurant.all.each do |restaurant|%>
+                <option value="<%=restaurant.id%>"><%=restaurant.name%></option>
+            <%end%>
+            </select>
+        <p><button type="submit" value="add" name="button">try!</button>
+          <button type="submit" value="favorite" name="button">favorite!</button></p>
+    </form>
+</body>
+</html>

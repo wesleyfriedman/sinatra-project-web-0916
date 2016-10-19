@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/restaurants/new">Add a Restaurant</a>
+    <a href="/users/new">Add a User</a>
+    <a href="/restaurants">See all Restaurants</a>
+    <a href="/users">See all Users</a>
+    <h1>Edit <%=@restaurant.name%></h1>
+    <form class="" action="/restaurants/<%=@restaurant.id%>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <p>Name<input type="text" name="restaurant[name]" value="<%=@restaurant.name%>"></p>
+      <p>Rating<input type="text" name="restaurant[rating]" value="<%=@restaurant.rating%>"></p>
+      <p>Address<input type="text" name="restaurant[address]" value="<%=@restaurant.address%>"></p>
+      <p><button type="submit" >update</button></p>
+
+    </form>
+    <form class="" action="/restaurants/<%=@restaurant.id%>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <p><button type="submit" value="delete">delete</button></p>
+
+    </form>
+
+  </body>
+</html>
