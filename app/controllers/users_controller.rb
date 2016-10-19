@@ -49,13 +49,8 @@ class UsersController<ApplicationController
         @user = User.create(params)
         redirect to "/users/#{@user.id}"
     end
-    post '/users/:id' do
-      binding.pry
-        @user = User.find(params[:id])
-        @restaurant = Restaurant.find(params[:users][:restaurant_id])
-        @user.restaurants << @restaurant
-        redirect to "/users/#{@user.id}"
-    end
+    #
+    
     get '/users/:id/edit' do
         @user = User.find(params[:id])
         erb :'/users/edit'

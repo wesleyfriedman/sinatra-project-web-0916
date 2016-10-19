@@ -14,15 +14,26 @@
         <%@user.restaurants.each do |restaurant|%>
             <li><%=restaurant.name%></li>
         <%end%>
+
     </ul>
-    <form action="/users/<%=@user.id%>" method="POST">
-            <select name="users[restaurant_id]" type="text">
+    <p><%=@user.name%>'s Favorite Restaurants:</p>
+    <ul><%UserRestaurant.all.map do |x|%>
+      <%if x.user_id == @user.id && x.favorites == 1%>
+        <p><%=puts x.restaurant_id%></p>
+        <%end%>
+      <%end%></ul>
+
+    <form action="/user_restaurants" method="POST">
+      <!-- params = {user: {user_id: } }-->
+            <input type="hidden" name="user[user_id]" value="<%= @user.id %>">
+            <select name="user[restaurant_id]" type="text">
             <%Restaurant.all.each do |restaurant|%>
                 <option value="<%=restaurant.id%>"><%=restaurant.name%></option>
             <%end%>
             </select>
-        <p><button type="submit" value="add" name="button">try!</button>
-          <button type="submit" value="favorite" name="button">favorite!</button></p>
+        <p><button type="submit" name="submit_type[button]" value="add" >try!</button>
+          <p><button type="submit" name="submit_type[favorites]" value="1">favorite!</button>
+
     </form>
 </body>
 </html>

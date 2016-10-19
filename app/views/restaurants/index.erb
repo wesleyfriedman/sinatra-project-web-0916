@@ -22,10 +22,10 @@
 <head>
     <title></title>
 </head>
-<body>
-    <a href="/restaurants/new">Add a Restaurant</a>
-    <a href="/users/new">Add a User</a>
-    <a href="/users">See all Users</a>
+<body background="http://www.foodwise.com.au/wp-content/uploads/2012/10/ChoppingBoard2.gif">
+    <a href="/restaurants/new" style="color: black; font-family: Courier New">Add a Restaurant</a>
+    <a href="/users/new" style="color: black; font-family: Courier New">Add a User</a>
+    <a href="/users" style="color: black; font-family: Courier New">See all Users</a>
     <ul>
         <%@restaurants.each do |restaurant|%>
             <p><a href="/restaurants/<%=restaurant.id%>"> <%=restaurant.name%><br></p>
