@@ -6,7 +6,7 @@ class Restaurant < ActiveRecord::Base
   def self.search(location:, term:)
     # binding.pry
     @results = Yelp.client.search(location, {term: term})
-    binding.pry
+    # binding.pry
     @results.businesses.map do |b|
       @name = b.name
       @address = b.location.display_address.join(", ")

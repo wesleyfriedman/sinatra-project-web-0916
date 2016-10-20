@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161019185720) do
   create_table "user_restaurants", force: :cascade do |t|
     t.integer "user_id"
     t.integer "restaurant_id"
-    t.integer "favorites"
+    t.boolean "favorites"
   end
 
   create_table "users", force: :cascade do |t|

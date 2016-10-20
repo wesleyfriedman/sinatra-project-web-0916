@@ -10,30 +10,40 @@
     <a href="/users">See all Users</a>
     <p>Name: <%=@user.name%><br></p>
     <p>Restaurant(s) <%=@user.name%> wants to try:</p>
+
     <ul>
         <%@user.restaurants.each do |restaurant|%>
             <li><%=restaurant.name%></li>
+             <form action="/users/<%=@user.id%>/remove_try" method="POST">
+                 <input type="hidden" name="restaurant_id" value="<%=restaurant.id%>">
+                 <input type="submit" value="delete">
+             </form>
         <%end%>
-
     </ul>
-    <p><%=@user.name%>'s Favorite Restaurants:</p>
-    <ul><%UserRestaurant.all.map do |x|%>
-      <%if x.user_id == @user.id && x.favorites == 1%>
-        <p><%=puts x.restaurant_id%></p>
-        <%end%>
-      <%end%></ul>
 
-    <form action="/user_restaurants" method="POST">
-      <!-- params = {user: {user_id: } }-->
-            <input type="hidden" name="user[user_id]" value="<%= @user.id %>">
-            <select name="user[restaurant_id]" type="text">
+    <p><%=@user.name%>'s Favorite Restaurants:</p>
+    <ul>
+        <%@user.favorite_restaurants.each do |restaurant|%>
+            <li><%=restaurant.name%></li>
+            <form action="/users/<%=@user.id%>/remove_favorite" method="POST">
+                 <input type="hidden" name="restaurant_id" value="<%=restaurant.id%>">
+                 <input type="submit" value="delete">
+             </form>
+        <%end%>
+    </ul>
+
+
+    <form action="/users/<%=@user.id%>/add_restaurant" method="POST">
+        <select name="restaurant_id" type="text">
             <%Restaurant.all.each do |restaurant|%>
                 <option value="<%=restaurant.id%>"><%=restaurant.name%></option>
             <%end%>
-            </select>
-        <p><button type="submit" name="submit_type[button]" value="add" >try!</button>
-          <p><button type="submit" name="submit_type[favorites]" value="1">favorite!</button>
-
+        </select>
+        <input type="checkbox" name="try" value="try">Try
+        <input type="checkbox" name="favorite" value="favorite">Favorite
+        <input type="submit" name="submit">
     </form>
+
+
 </body>
 </html>
